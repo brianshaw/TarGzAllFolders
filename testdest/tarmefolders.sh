@@ -8,13 +8,15 @@ echo " "
 #folderToProcess="$1"
 count=0
 #for D in "$folderToProcess"; 
-for D in /Users/brianshaw/Desktop/testloop/*;
+for D in /Users/brianshaw/Repos/TarGzAllFolders/testloop/*;
 do
     if [ -d "${D}" ]; then
         echo "Processing: ${D}"   # your processing here
-        #echo "${D// /_}"   # your processing here
+        filename="${D##*/}"
+        filename="${filename// /_}.tar.gz"
+        echo "Creating $filename"   # your processing here
         
-        #tar -zcvf "${D// /_}".tar.gz "${D}"
+        tar -zcvf "$filename" "${D}"
 
         echo "FINISHED Processing: ${D}"
         echo " "
